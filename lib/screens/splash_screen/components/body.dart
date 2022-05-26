@@ -1,7 +1,7 @@
 import 'package:animated_splash_screen/animated_splash_screen.dart';
 import 'package:flutter/material.dart';
-import 'package:sena_community_app/screens/home/home.dart';
 import 'package:page_transition/page_transition.dart';
+import 'package:sena_community_app/screens/login/login.dart';
 
 class Body extends StatelessWidget {
   const Body({Key? key}) : super(key: key);
@@ -15,7 +15,7 @@ class Body extends StatelessWidget {
           const Text("Vision 16", style: TextStyle(fontSize: 35, fontWeight: FontWeight.bold,),),
         ],
       ),
-      nextScreen: const Home(),
+      nextScreen: const LogInScreen(),
       splashIconSize: 300,
       duration: 2000,
       splashTransition: SplashTransition.fadeTransition,

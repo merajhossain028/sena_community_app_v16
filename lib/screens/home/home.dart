@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:sena_community_app/helpers/constants/constants.dart';
-
 import 'components/body.dart';
 
 class Home extends StatelessWidget {
@@ -13,7 +11,7 @@ class Home extends StatelessWidget {
         backgroundColor: Colors.transparent,
         title: const Center(
           child: Text(
-            'Login',
+            'Home',
             style: TextStyle(
               color: Colors.green,
               fontSize: 25,
