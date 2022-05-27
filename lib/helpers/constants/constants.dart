@@ -5,7 +5,7 @@ import 'package:intl/intl.dart' show DateFormat, NumberFormat;
 Color white = Colors.white;
 Color black = Colors.black;
 
-Color kLightPrimaryColor = Colors.blue.shade900.withOpacity(0.85);
+Color kLightPrimaryColor = Colors.green.shade900.withOpacity(0.85);
 Color kPrimaryColor = const Color.fromRGBO(216, 255, 22, 1.0);
 Color kSecendoryColor = const Color.fromRGBO(1, 63, 4, 1.0);
 
