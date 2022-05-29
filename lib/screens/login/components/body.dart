@@ -58,7 +58,7 @@ class Body extends StatelessWidget {
                           height: 20,
                         ),
                         const Text(
-                          "\“সকলের তরে সকলে আমরা\nপ্রত্যেকে মোরা পরের তরে\”",
+                          "“সকলের তরে সকলে আমরা\nপ্রত্যেকে মোরা পরের তরে”",
                           style: TextStyle(
                             fontSize: 16,
                             fontWeight: FontWeight.bold,
@@ -162,7 +162,7 @@ class Body extends StatelessWidget {
                           width: size.width * 0.4,
                           child: RawMaterialButton(
                             fillColor: Colors.white,
-                            padding: EdgeInsets.symmetric(vertical: 10.0),
+                            padding: const EdgeInsets.symmetric(vertical: 10.0),
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(20.0),
                             ),
@@ -213,7 +213,7 @@ class Body extends StatelessWidget {
                                 Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                    builder: (context) => SignUp(),
+                                    builder: (context) => const SignUp(),
                                 ),
                               );
                               
