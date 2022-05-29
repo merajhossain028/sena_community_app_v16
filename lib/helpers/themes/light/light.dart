@@ -31,7 +31,7 @@ ThemeData lightTheme = ThemeData(
   backgroundColor: white,
   fontFamily: GoogleFonts.droidSans().fontFamily,
   iconTheme: lightIconThemeData,
-  inputDecorationTheme: lightInputDecorationTheme,
+  //inputDecorationTheme: lightInputDecorationTheme,
   scaffoldBackgroundColor: white,
   primarySwatch: Colors.blue,
   visualDensity: VisualDensity.adaptivePlatformDensity,
