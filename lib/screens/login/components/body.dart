@@ -87,13 +87,12 @@ class Body extends StatelessWidget {
           Align(
             alignment: Alignment.center,
             child: SingleChildScrollView(
-              child: Card(
-                margin: const EdgeInsets.only(top: 180),
-                shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(20)),
-                child: SizedBox(
-                  height: size.height * 0.57,
-                  width: size.width * 0.9,
+              child: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 10.0),
+                child: Card(
+                  margin: const EdgeInsets.only(top: 180),
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(20)),
                   child: Padding(
                     padding: const EdgeInsets.all(20),
                     child: Column(
@@ -214,9 +213,8 @@ class Body extends StatelessWidget {
                                   context,
                                   MaterialPageRoute(
                                     builder: (context) => const SignUp(),
-                                ),
-                              );
-                              
+                                  ),
+                                );
                               },
                             ),
                           ],
