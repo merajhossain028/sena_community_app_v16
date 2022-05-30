@@ -6,22 +6,25 @@ class UserListItem extends StatelessWidget {
 
   List<Map<String, dynamic>> catagories = [
     {
-      'image': 'assets/images/v16.png',
-      'text': 'Niaz Morshed Elite',
-      'date': '2022 National President',
-      'chapter': 'JCI Dhaka Cosmopolitan ',
+      'image': 'assets/images/majid.jpeg',
+      'name': ' Md Abdul Majid',
+      'designation': 'Brigadier General (Retd)',
+      'gc': '2375',
+      'ba': '3264',
     },
     {
-      'image': 'assets/images/v16.png',
-      'text': 'Sarah Kamal',
-      'date': '2022 Immediate Past National President ',
-      'chapter': 'JCI Dhaka Cosmopolitan ',
+      'image': 'assets/images/majid.jpeg',
+      'name': ' Md Abdul Majid',
+      'designation': 'Brigadier General (Retd)',
+      'gc': '2375',
+      'ba': '3264',
     },
     {
-      'image': 'assets/images/v16.png',
-      'text': 'Erfan Haque',
-      'date': '2022 National Executive Assistant to National President',
-      'chapter': 'JCI Dhaka Central',
+      'image': 'assets/images/majid.jpeg',
+      'name': ' Md Abdul Majid',
+      'designation': 'Brigadier General (Retd)',
+      'gc': '2375',
+      'ba': '3264',
     },
   ];
   @override
@@ -34,9 +37,10 @@ class UserListItem extends StatelessWidget {
             (index) => InkWell(
                     child: ListCard(
                   image: catagories[index]['image'],
-                  text: catagories[index]['text'],
-                  date: catagories[index]['date'],
-                  chapter: catagories[index]['chapter'],
+                  name: catagories[index]['name'],
+                  designation: catagories[index]['designation'],
+                  gc: catagories[index]['gc'],
+                  ba: catagories[index]['ba'],
                   press: () => print('$index'),
                 ))),
       ],
@@ -45,49 +49,74 @@ class UserListItem extends StatelessWidget {
 }
 
 class ListCard extends StatelessWidget {
-  ListCard({
+  const ListCard({
     Key? key,
     required this.image,
-    required this.text,
-    required this.date,
+    required this.name,
+    required this.designation,
+    required this.gc,
+    required this.ba,
     required this.press,
-    required this.chapter,
   }) : super(key: key);
 
-  final String image, text, date, chapter;
+  final String image, name, designation, gc, ba;
   final GestureTapCallback press;
-
-  
 
   @override
   Widget build(BuildContext context) {
+    final Size size = MediaQuery.of(context).size;
     return Card(
       elevation: 5.0,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15.0)),
       child: Container(
         margin: const EdgeInsets.all(4),
         decoration: BoxDecoration(borderRadius: BorderRadius.circular(15.0)),
-        child: Row(
+        child: Column(
           children: [
-            ClipRRect(
-                borderRadius: BorderRadius.circular(15.0),
-                child: Image.asset(image,
-                    fit: BoxFit.fitHeight, height: 100, width: 100)),
-            const SizedBox(width: 10),
-            Expanded(
-                //flex: 4,
-                child: Column(
-                    mainAxisSize: MainAxisSize.min,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                  Text(text,
-                      style: const TextStyle(
-                          fontWeight: FontWeight.bold, fontSize: 16.0)),
-                  const SizedBox(height: 8.0),
-                  Text(date, style: const TextStyle(color: Colors.grey)),
-                  const SizedBox(height: 8.0),
-                  Text(chapter, style: const TextStyle(color: Colors.grey)),
-                ])),
+            Row(
+              children: [
+                ClipRRect(
+                  borderRadius: const BorderRadius.all(Radius.circular(15.0)),
+                  child: Image.asset(image,
+                      fit: BoxFit.fitHeight, height: 100, width: 100),
+                ),
+                const SizedBox(width: 10),
+                Expanded(
+                    //flex: 4,
+                    child: Column(mainAxisSize: MainAxisSize.min,
+                        //crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                      Text(name,
+                          style: const TextStyle(
+                              fontWeight: FontWeight.bold, fontSize: 16.0)),
+                      const SizedBox(height: 8.0),
+                      Text('Designation: $designation',
+                          style: const TextStyle(color: Colors.grey)),
+                      const SizedBox(height: 8.0),
+                      Text('GC Number: $gc',
+                          style: const TextStyle(color: Colors.grey)),
+                      const SizedBox(height: 8.0),
+                      Text('BA Number: $ba',
+                          style: const TextStyle(color: Colors.grey)),
+                    ])),
+              ],
+            ),
+            SizedBox(
+              width: size.width * 0.3,
+              child: RawMaterialButton(
+                fillColor: Colors.white,
+                padding: const EdgeInsets.symmetric(vertical: 10.0),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(20.0),
+                ),
+                onPressed: () {},
+                child: const Text(
+                  "View Profile",
+                  style: TextStyle(
+                      color: Colors.green, fontWeight: FontWeight.bold),
+                ),
+              ),
+            ),
           ],
         ),
       ),
