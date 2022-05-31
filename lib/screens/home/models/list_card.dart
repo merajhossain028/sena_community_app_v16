@@ -49,7 +49,7 @@ class UserListItem extends StatelessWidget {
 }
 
 class ListCard extends StatelessWidget {
-  const ListCard({
+  ListCard({
     Key? key,
     required this.image,
     required this.name,
@@ -70,52 +70,67 @@ class ListCard extends StatelessWidget {
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15.0)),
       child: Container(
         margin: const EdgeInsets.all(4),
-        decoration: BoxDecoration(borderRadius: BorderRadius.circular(15.0)),
+        padding: const EdgeInsets.all(5),
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(15.0),
+          gradient: const LinearGradient(
+            colors: [
+              Color(0xFF013F04),
+              Color(0xFF69E96E),
+            ],
+          ),
+        ),
         child: Column(
           children: [
             Row(
               children: [
                 ClipRRect(
-                  borderRadius: const BorderRadius.all(Radius.circular(15.0)),
+                  borderRadius: const BorderRadius.all(Radius.circular(20.0)),
                   child: Image.asset(image,
-                      fit: BoxFit.fitHeight, height: 100, width: 100),
+                      fit: BoxFit.fitHeight, height: 130, width: 130),
                 ),
                 const SizedBox(width: 10),
                 Expanded(
-                    //flex: 4,
-                    child: Column(mainAxisSize: MainAxisSize.min,
-                        //crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
+                  //flex: 4,
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
                       Text(name,
                           style: const TextStyle(
-                              fontWeight: FontWeight.bold, fontSize: 16.0)),
+                              fontWeight: FontWeight.bold,
+                              fontSize: 16.0,
+                              color: Colors.white)),
                       const SizedBox(height: 8.0),
                       Text('Designation: $designation',
-                          style: const TextStyle(color: Colors.grey)),
+                          style: const TextStyle(color: Colors.white)),
                       const SizedBox(height: 8.0),
                       Text('GC Number: $gc',
-                          style: const TextStyle(color: Colors.grey)),
+                          style: const TextStyle(color: Colors.white)),
                       const SizedBox(height: 8.0),
                       Text('BA Number: $ba',
-                          style: const TextStyle(color: Colors.grey)),
-                    ])),
+                          style: const TextStyle(color: Colors.white)),
+                      SizedBox(
+                        width: size.width * 0.3,
+                        child: RawMaterialButton(
+                          fillColor: Colors.white,
+                          padding: const EdgeInsets.symmetric(vertical: 10.0),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(20.0),
+                          ),
+                          onPressed: () {},
+                          child: const Text(
+                            "View Profile",
+                            style: TextStyle(
+                                color: Colors.green,
+                                fontWeight: FontWeight.bold),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
               ],
-            ),
-            SizedBox(
-              width: size.width * 0.3,
-              child: RawMaterialButton(
-                fillColor: Colors.white,
-                padding: const EdgeInsets.symmetric(vertical: 10.0),
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(20.0),
-                ),
-                onPressed: () {},
-                child: const Text(
-                  "View Profile",
-                  style: TextStyle(
-                      color: Colors.green, fontWeight: FontWeight.bold),
-                ),
-              ),
             ),
           ],
         ),

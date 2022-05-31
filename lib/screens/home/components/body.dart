@@ -52,14 +52,20 @@ class Body extends StatelessWidget {
                       shape: BoxShape.circle),
                   child: const Icon(Icons.notifications),
                 ),
-                // Container(
-                //   height: 46,
-                //   width: 46,
-                //   decoration: BoxDecoration(
-                //       color: Colors.green.withOpacity(0.3),
-                //       shape: BoxShape.circle),
-                //   child: Drawer(),
-                // ),
+                InkWell(
+                  child: Container(
+                    height: 46,
+                    width: 46,
+                    decoration: BoxDecoration(
+                        color: Colors.green.withOpacity(0.3),
+                        shape: BoxShape.circle),
+                    child: Icon(Icons.menu),
+                  
+                  ),
+                  onTap: (){
+                    Scaffold.of(context).openEndDrawer();
+                  },
+                ),
               ],
             ),
           ),
