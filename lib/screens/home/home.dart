@@ -39,26 +39,24 @@ class CustomDrawer extends StatelessWidget {
                     ],
                   ),
                 ),
-                child: Container(
-                  child: Column(
-                    children: const [
-                      CircleAvatar(
-                        radius: 42,
-                        backgroundColor: Colors.white,
-                        backgroundImage: AssetImage('assets/images/v16.png'),
+                child: Column(
+                  children: const [
+                    CircleAvatar(
+                      radius: 42,
+                      backgroundColor: Colors.white,
+                      backgroundImage: AssetImage('assets/images/v16.png'),
+                    ),
+                    SizedBox(height: 10),
+                    Text(
+                      'Vision 16',
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 24,
+                        fontWeight: FontWeight.bold,
                       ),
-                      SizedBox(height: 10),
-                      Text(
-                        'Vision 16',
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 24,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                      SizedBox(height: 10),
-                    ],
-                  ),
+                    ),
+                    SizedBox(height: 10),
+                  ],
                 ),
               ),
               CustomListTile(Icons.home, "Home", () {}),
