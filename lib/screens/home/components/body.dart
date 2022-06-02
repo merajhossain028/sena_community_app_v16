@@ -59,7 +59,7 @@ class Body extends StatelessWidget {
                     decoration: BoxDecoration(
                         color: Colors.green.withOpacity(0.3),
                         shape: BoxShape.circle),
-                    child: Icon(Icons.menu),
+                    child: const Icon(Icons.menu),
                   
                   ),
                   onTap: (){
