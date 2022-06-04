@@ -24,7 +24,7 @@ class Body extends StatelessWidget {
             child: Align(
               alignment: Alignment.topCenter,
               child: Column(
-                mainAxisSize: MainAxisSize.min,
+                //mainAxisSize: MainAxisSize.min,
                 children: [
                   SafeArea(
                     child: Padding(
@@ -125,6 +125,7 @@ class Body extends StatelessWidget {
                       ),
                     ),
                   ),
+                  const SizedBox(height: 20),
                   FamilyInfoSlider(),
                 ],
               ),
@@ -135,6 +136,7 @@ class Body extends StatelessWidget {
     );
   }
 
+//Dialogue
   Future openDialog(context) => showDialog(
         context: context,
         builder: (context) => AlertDialog(
