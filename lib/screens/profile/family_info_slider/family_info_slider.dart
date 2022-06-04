@@ -10,12 +10,7 @@ class FamilyInfoSlider extends StatelessWidget {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          CarouselSlider(
-            items: items,
-            options: options,
-          ),
-        ],
+        children: [],
       ),
     );
   }

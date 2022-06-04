@@ -16,7 +16,7 @@ class Body extends StatelessWidget {
       child: Column(
         children: [
           Container(
-            height: size.height * 0.45,
+            //height: size.height * 0.45,
             width: size.width,
             decoration: const BoxDecoration(
               color: Color(0xFFD8FFDE),
@@ -138,6 +138,9 @@ class Body extends StatelessWidget {
   Future openDialog(context) => showDialog(
         context: context,
         builder: (context) => AlertDialog(
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(20.0),
+          ),
           title: const Text("Show Details"),
           content: Column(
             mainAxisSize: MainAxisSize.min,
@@ -151,7 +154,7 @@ class Body extends StatelessWidget {
                       fontSize: 12,
                     ),
                   ),
-                  SizedBox(height: 5),
+                  SizedBox(width: 5),
                   Text(
                     "Maksura Ahsan Runa",
                     style: TextStyle(
@@ -170,7 +173,7 @@ class Body extends StatelessWidget {
                       fontSize: 12,
                     ),
                   ),
-                  SizedBox(height: 5),
+                  SizedBox(width: 5),
                   Text(
                     "6th September",
                     style: TextStyle(
@@ -189,7 +192,7 @@ class Body extends StatelessWidget {
                       fontSize: 12,
                     ),
                   ),
-                  SizedBox(height: 5),
+                  SizedBox(width: 5),
                   Text(
                     "12.10.1960",
                     style: TextStyle(
@@ -208,7 +211,7 @@ class Body extends StatelessWidget {
                       fontSize: 12,
                     ),
                   ),
-                  SizedBox(height: 5),
+                  SizedBox(width: 5),
                   Text(
                     "20.05.1996",
                     style: TextStyle(
