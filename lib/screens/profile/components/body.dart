@@ -136,7 +136,7 @@ class Body extends StatelessWidget {
     );
   }
 
-//Dialogue
+//Dialogue Function Builder
   Future openDialog(context) => showDialog(
         context: context,
         builder: (context) => AlertDialog(
