@@ -16,7 +16,7 @@ class Body extends StatelessWidget {
       child: Column(
         children: [
           Container(
-            height: size.height * 0.45,
+            height: size.height * 0.5,
             width: size.width,
             decoration: const BoxDecoration(
               color: Color(0xFFD8FFDE),
