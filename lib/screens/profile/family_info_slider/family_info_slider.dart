@@ -16,6 +16,7 @@ class _FamilyInfoSliderState extends State<FamilyInfoSlider> {
     pageController = PageController();
     super.initState();
   }
+
   @override
   void dispose() {
     pageController.dispose();
@@ -29,7 +30,7 @@ class _FamilyInfoSliderState extends State<FamilyInfoSlider> {
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
         SizedBox(
-          height: 250,
+          height: 300,
           child: PageView.builder(
             controller: pageController,
             itemBuilder: (_, index) {
@@ -39,9 +40,12 @@ class _FamilyInfoSliderState extends State<FamilyInfoSlider> {
                   return child!;
                 },
                 child: Container(
-                  margin: EdgeInsets.all(24.0),
-                  height: 250,
-                  color: Colors.green,
+                  margin: const EdgeInsets.all(24.0),
+                  height: 300,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(24),
+                    color: Colors.green,
+                  ),
                 ),
               );
             },

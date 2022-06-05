@@ -125,12 +125,11 @@ class Body extends StatelessWidget {
                       ),
                     ),
                   ),
-                  const SizedBox(height: 20),
-                  FamilyInfoSlider(),
                 ],
               ),
             ),
           ),
+          FamilyInfoSlider(),
         ],
       ),
     );
