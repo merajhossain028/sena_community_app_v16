@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:sena_community_app/screens/profile/family_info_slider/family_info_slider.dart';
+
 class Body extends StatelessWidget {
   const Body({Key? key}) : super(key: key);
 
@@ -160,23 +161,6 @@ class Body extends StatelessWidget {
             ),
             const SizedBox(height: 10),
             //Grid View
-            GridView.builder(
-            gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
-                maxCrossAxisExtent: 200,
-                childAspectRatio: 3 / 2,
-                crossAxisSpacing: 20,
-                mainAxisSpacing: 20),
-            itemCount: 5,
-            itemBuilder: (BuildContext ctx, index) {
-              return Container(
-                alignment: Alignment.center,
-                child: Text("bal"),
-                decoration: BoxDecoration(
-                    color: Colors.amber,
-                    borderRadius: BorderRadius.circular(15)),
-              );
-            }),
-
           ],
         ),
       ),
