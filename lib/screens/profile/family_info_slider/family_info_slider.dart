@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:sena_community_app/helpers/size_config/size_config.dart';
 
 class FamilyInfoSlider extends StatefulWidget {
   const FamilyInfoSlider({Key? key}) : super(key: key);
@@ -8,12 +9,12 @@ class FamilyInfoSlider extends StatefulWidget {
 }
 
 class _FamilyInfoSliderState extends State<FamilyInfoSlider> {
-  late PageController pageController = PageController();
+  late PageController pageController;
   int pageNo = 0;
 
   @override
   void initState() {
-    pageController = PageController();
+    pageController = PageController(initialPage: 0);
     super.initState();
   }
 
@@ -28,108 +29,112 @@ class _FamilyInfoSliderState extends State<FamilyInfoSlider> {
     Size size = MediaQuery.of(context).size;
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
-      crossAxisAlignment: CrossAxisAlignment.center,
       children: [
         SizedBox(
           height: size.height * 0.35,
           width: size.width * 0.6,
           child: PageView.builder(
+            itemCount: 5,
             controller: pageController,
-            onPageChanged: (index) {
-              pageNo = index;
-              setState(() {});
-            },
-            itemBuilder: (_, index) {
+            onPageChanged: (index) => setState(() => pageNo = index),
+            itemBuilder: (context, index) {
               return AnimatedBuilder(
                 animation: pageController,
-                builder: (ctx, child) {
+                builder: (context, child) {
                   return child!;
                 },
-                child: Card(
-                  child: Container(
-                    height: size.height * 0.35,
-                    width: size.width * 0.6,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(10),
-                      color: Colors.white,
-                    ),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Expanded(
-                          flex: 1,
-                          child: Center(
-                            child: Image.asset(
-                              "assets/images/majid.jpeg",
-                              fit: BoxFit.fitHeight,
+                child: InkWell(
+                  onTap: (){
+                    ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+                      content: Text('This is a test'),
+                    ));
+                  },
+                  child: Card(
+                    child: Container(
+                      height: size.height * 0.35,
+                      width: size.width * 0.6,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(10),
+                        color: Colors.white,
+                      ),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Expanded(
+                            child: Center(
+                              child: Image.asset(
+                                "assets/images/majid.jpeg",
+                                fit: BoxFit.fitHeight,
+                              ),
                             ),
                           ),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.only(left: 5),
-                          child: Expanded(
-                              flex: 1,
+                          Expanded(
+                            flex: 1,
+                            child: Padding(
+                              padding: const EdgeInsets.only(left: 5),
                               child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: const [
-                                  SizedBox(
-                                    height: 10,
-                                  ),
-                                  Text(
-                                    "Captain Abdul Ahad",
-                                    style: TextStyle(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  mainAxisSize: mainMin,
+                                  children: const [
+                                    SizedBox(
+                                      height: 10,
+                                    ),
+                                    Text(
+                                      "Captain Abdul Ahad",
+                                      style: TextStyle(
+                                          fontSize: 12,
+                                          fontWeight: FontWeight.bold),
+                                    ),
+                                    SizedBox(
+                                      height: 5,
+                                    ),
+                                    Text(
+                                      "Present Occupation: Bangladesh Army ",
+                                      style: TextStyle(
                                         fontSize: 12,
-                                        fontWeight: FontWeight.bold),
-                                  ),
-                                  SizedBox(
-                                    height: 5,
-                                  ),
-                                  Text(
-                                    "Present Occupation: Bangladesh Army ",
-                                    style: TextStyle(
-                                      fontSize: 12,
+                                      ),
                                     ),
-                                  ),
-                                  SizedBox(
-                                    height: 5,
-                                  ),
-                                  Text(
-                                    "Spouse: Eleem Farzana",
-                                    style: TextStyle(
-                                      fontSize: 12,
+                                    SizedBox(
+                                      height: 5,
                                     ),
-                                  ),
-                                  SizedBox(
-                                    height: 5,
-                                  ),
-                                  Text(
-                                    "Date of Birth: 15 October",
-                                    style: TextStyle(
-                                      fontSize: 12,
+                                    Text(
+                                      "Spouse: Eleem Farzana",
+                                      style: TextStyle(
+                                        fontSize: 12,
+                                      ),
                                     ),
-                                  ),
-                                  SizedBox(
-                                    height: 5,
-                                  ),
-                                  Text(
-                                    "Alma Mater: Mirzapur Cadet College",
-                                    style: TextStyle(
-                                      fontSize: 12,
+                                    SizedBox(
+                                      height: 5,
                                     ),
-                                  ),
-                                  SizedBox(
-                                    height: 5,
-                                  ),
-                                ],
-                              )),
-                        ),
-                      ],
+                                    Text(
+                                      "Date of Birth: 15 October",
+                                      style: TextStyle(
+                                        fontSize: 12,
+                                      ),
+                                    ),
+                                    SizedBox(
+                                      height: 5,
+                                    ),
+                                    Text(
+                                      "Alma Mater: Mirzapur Cadet College",
+                                      style: TextStyle(
+                                        fontSize: 12,
+                                      ),
+                                    ),
+                                    SizedBox(
+                                      height: 5,
+                                    ),
+                                  ],
+                                ),
+                            ),
+                          ),
+                        ],
+                      ),
                     ),
                   ),
                 ),
               );
             },
-            itemCount: 5,
           ),
         ),
         const SizedBox(height: 10),
