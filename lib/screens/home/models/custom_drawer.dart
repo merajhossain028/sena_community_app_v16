@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../../v16_album/v16_album.dart';
+
 class CustomDrawer extends StatelessWidget {
   const CustomDrawer({
     Key? key,
@@ -47,7 +49,9 @@ class CustomDrawer extends StatelessWidget {
                 ),
               ),
               CustomListTile(Icons.home, "Home", () {}),
-              CustomListTile(Icons.album, "Vision 16 Album", () {}),
+              CustomListTile(Icons.album, "Vision 16 Album", () {
+                MaterialPageRoute(builder: (context) => const VisionAlbum());
+              }),
               CustomListTile(Icons.person, "My Profile", () {}),
               CustomListTile(Icons.person_add, "Edit Profile", () {}),
               CustomListTile(
