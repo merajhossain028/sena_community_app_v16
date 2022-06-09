@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:sena_community_app/screens/home/home.dart';
 import 'package:sena_community_app/screens/sign_up/sign_up.dart';
 
 class Body extends StatelessWidget {
@@ -166,31 +167,21 @@ class Body extends StatelessWidget {
                               borderRadius: BorderRadius.circular(20.0),
                             ),
                             onPressed: () {},
-                            child: const Text(
-                              "Login",
-                              style: TextStyle(fontWeight: FontWeight.bold),
+                            child: InkWell(
+                              onTap: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) => const Home(),
+                                  ),
+                                );
+                              },
+                              child: const Text(
+                                "Login",
+                                style: TextStyle(fontWeight: FontWeight.bold),
+                              ),
                             ),
                           ),
-                        ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            const Text(
-                              "Don't Remember Your Password?",
-                              style: TextStyle(
-                                color: Colors.black,
-                              ),
-                            ),
-                            TextButton(
-                              child: const Text(
-                                "Click Here",
-                                style: TextStyle(
-                                  color: Colors.green,
-                                ),
-                              ),
-                              onPressed: () {},
-                            ),
-                          ],
                         ),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,

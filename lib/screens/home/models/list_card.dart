@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:sena_community_app/screens/profile/profile.dart';
 
 // ignore: must_be_immutable
 class UserListItem extends StatelessWidget {
@@ -118,7 +119,14 @@ class ListCard extends StatelessWidget {
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(20.0),
                           ),
-                          onPressed: () {},
+                          onPressed: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => const ProfilePage(),
+                              ),
+                            );
+                          },
                           child: const Text(
                             "View Profile",
                             style: TextStyle(

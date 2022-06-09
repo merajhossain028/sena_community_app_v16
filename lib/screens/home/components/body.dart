@@ -19,7 +19,7 @@ class Body extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Container(
-                  width: size.width * 0.6,
+                  width: size.width * 0.55,
                   decoration: BoxDecoration(
                     color: Colors.green.withOpacity(0.3),
                     borderRadius: BorderRadius.circular(20),
@@ -60,9 +60,8 @@ class Body extends StatelessWidget {
                         color: Colors.green.withOpacity(0.3),
                         shape: BoxShape.circle),
                     child: const Icon(Icons.menu),
-                  
                   ),
-                  onTap: (){
+                  onTap: () {
                     Scaffold.of(context).openEndDrawer();
                   },
                 ),

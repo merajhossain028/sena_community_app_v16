@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:sena_community_app/helpers/constants/constants.dart';
+import 'package:sena_community_app/screens/login/login.dart';
 
 class Body extends StatefulWidget {
   const Body({Key? key}) : super(key: key);
@@ -269,7 +270,14 @@ class _BodyState extends State<Body> {
                               shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(20.0),
                               ),
-                              onPressed: () {},
+                              onPressed: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) => LogInScreen(),
+                                  ),
+                                );
+                              },
                               child: const Text(
                                 "Sign Up",
                                 style: TextStyle(fontWeight: FontWeight.bold),

@@ -50,7 +50,7 @@ class CustomDrawer extends StatelessWidget {
               ),
               CustomListTile(Icons.home, "Home", () {}),
               CustomListTile(Icons.album, "Vision 16 Album", () {
-                MaterialPageRoute(builder: (context) => const VisionAlbum());
+                
               }),
               CustomListTile(Icons.person, "My Profile", () {}),
               CustomListTile(Icons.person_add, "Edit Profile", () {}),
