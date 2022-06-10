@@ -13,6 +13,6 @@ class Wrapper extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     _sizeConfig.init(context);
-    return const ProfilePage();
+    return const SplashScreen();
   }
 }
