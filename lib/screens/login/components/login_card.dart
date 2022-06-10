@@ -93,20 +93,17 @@ class LoginCard extends StatelessWidget {
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(20.0),
                       ),
-                      onPressed: () {},
-                      child: InkWell(
-                        onTap: () {
-                          Navigator.push(
+                      onPressed: () {
+                        Navigator.push(
                             context,
                             MaterialPageRoute(
                               builder: (context) => const Home(),
                             ),
                           );
-                        },
-                        child: const Text(
-                          "Login",
-                          style: TextStyle(fontWeight: FontWeight.bold),
-                        ),
+                      },
+                      child: const Text(
+                        "Login",
+                        style: TextStyle(fontWeight: FontWeight.bold),
                       ),
                     ),
                   ),
