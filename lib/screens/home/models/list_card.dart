@@ -42,6 +42,7 @@ class UserListItem extends StatelessWidget {
                   designation: catagories[index]['designation'],
                   gc: catagories[index]['gc'],
                   ba: catagories[index]['ba'],
+                  // ignore: avoid_print
                   press: () => print('$index'),
                 ))),
       ],
@@ -50,7 +51,7 @@ class UserListItem extends StatelessWidget {
 }
 
 class ListCard extends StatelessWidget {
-  ListCard({
+  const ListCard({
     Key? key,
     required this.image,
     required this.name,

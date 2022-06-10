@@ -13,7 +13,7 @@ class SignUp extends StatelessWidget {
           "Sign Up",
         ),
       ),
-      body: Body(),
+      body: const Body(),
     );
   }
 }
