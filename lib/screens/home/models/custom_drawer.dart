@@ -1,4 +1,10 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
+import 'package:sena_community_app/screens/home/home.dart';
+import 'package:sena_community_app/screens/login/login.dart';
+import 'package:sena_community_app/screens/profile/profile.dart';
+
+import 'package:sena_community_app/screens/v16_album/v16_album.dart';
 
 class CustomDrawer extends StatelessWidget {
   const CustomDrawer({
@@ -46,17 +52,61 @@ class CustomDrawer extends StatelessWidget {
                   ],
                 ),
               ),
-              CustomListTile(Icons.home, "Home", () {}),
-              CustomListTile(Icons.album, "Vision 16 Album", () {
-                
-              }),
-              CustomListTile(Icons.person, "My Profile", () {}),
-              CustomListTile(Icons.person_add, "Edit Profile", () {}),
               CustomListTile(
-                  Icons.person_add_alt, "Add Family Member Info", () {}),
+                icon: Icons.home,
+                text: "Home",
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const Home(),
+                    ),
+                  );
+                },
+              ),
               CustomListTile(
-                  Icons.browse_gallery_rounded, "Add Photo For Gallery", () {}),
-              CustomListTile(Icons.lock, "Logout", () {}),
+                  icon: Icons.album,
+                  text: "Vision 16 Album",
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const VisionAlbum(),
+                      ),
+                    );
+                  }),
+              CustomListTile(
+                  icon: Icons.person,
+                  text: "My Profile",
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const ProfilePage(),
+                      ),
+                    );
+                  }),
+              CustomListTile(
+                  icon: Icons.person_add, text: "Edit Profile", onTap: () {}),
+              CustomListTile(
+                  icon: Icons.person_add_alt,
+                  text: "Add Family Member Info",
+                  onTap: () {}),
+              CustomListTile(
+                  icon: Icons.browse_gallery_rounded,
+                  text: "Add Photo For Gallery",
+                  onTap: () {}),
+              CustomListTile(
+                  icon: Icons.lock,
+                  text: "Logout",
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const LogInScreen(),
+                      ),
+                    );
+                  }),
             ],
           ),
         ),
@@ -67,11 +117,16 @@ class CustomDrawer extends StatelessWidget {
 
 // ignore: must_be_immutable
 class CustomListTile extends StatelessWidget {
-  IconData icon;
-  String text;
-  Function onTap;
-  CustomListTile(this.icon, this.text, this.onTap, {Key? key})
-      : super(key: key);
+  const CustomListTile({
+    Key? key,
+    required this.icon,
+    required this.text,
+    required this.onTap,
+  }) : super(key: key);
+
+  final IconData icon;
+  final String text;
+  final void Function() onTap;
 
   @override
   Widget build(BuildContext context) {
@@ -82,7 +137,7 @@ class CustomListTile extends StatelessWidget {
             border: Border(bottom: BorderSide(color: Color(0xFF013F04)))),
         child: InkWell(
           splashColor: Colors.greenAccent,
-          onTap: onTap(),
+          onTap: onTap,
           child: SizedBox(
             height: 45,
             child: Row(
