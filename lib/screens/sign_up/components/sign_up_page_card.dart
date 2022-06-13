@@ -1,8 +1,6 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:sena_community_app/helpers/constants/constants.dart';
-import 'package:sena_community_app/screens/home/home.dart';
 
 import '../api/signup.dart';
 
@@ -25,6 +23,9 @@ class _SignUpPageCardState extends State<SignUpPageCard> {
   final formKey = GlobalKey<FormState>();
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
+  TextEditingController nameController = TextEditingController();
+
+  String? dropdownvalue;
 
   @override
   Widget build(BuildContext context) {
@@ -165,6 +166,13 @@ class _SignUpPageCardState extends State<SignUpPageCard> {
                             color: Colors.green,
                           ),
                         ),
+                        validator: (value) {
+                          if (value!.isEmpty) {
+                            return "Please Fill up your BA Number";
+                          } else {
+                            return null;
+                          }
+                        },
                       ),
                       const SizedBox(
                         height: 20,
@@ -200,18 +208,32 @@ class _SignUpPageCardState extends State<SignUpPageCard> {
                                 DateFormat('dd-MM-yyyy').format(pickdate);
                           }
                         },
+                        validator: (value) {
+                          if (value!.isEmpty) {
+                            return "Please Fill up your Birth Date";
+                          } else {
+                            return null;
+                          }
+                        },
                       ),
                       const SizedBox(
                         height: 20,
                       ),
-                      const TextField(
-                        decoration: InputDecoration(
+                      TextFormField(
+                        decoration: const InputDecoration(
                           hintText: "Spouse Name",
                           prefixIcon: Icon(
                             Icons.person,
                             color: Colors.green,
                           ),
                         ),
+                        validator: (value) {
+                          if (value!.isEmpty) {
+                            return "Please Fill up your Spouse Name";
+                          } else {
+                            return null;
+                          }
+                        },
                       ),
                       const SizedBox(
                         height: 20,
@@ -247,6 +269,52 @@ class _SignUpPageCardState extends State<SignUpPageCard> {
                                 DateFormat('dd-MM-yyyy').format(pickdate);
                           }
                         },
+                        validator: (value) {
+                          if (value!.isEmpty) {
+                            return "Please Fill up your Anniversery Date";
+                          } else {
+                            return null;
+                          }
+                        },
+                      ),
+                      const SizedBox(
+                        height: 20,
+                      ),
+                      DropdownButton<String>(
+                        value: dropdownvalue,
+                        hint: const Text(
+                          "Select Your Gender",
+                          style: TextStyle(
+                            fontSize: 16,
+                          ),
+                        ),
+                        isExpanded: true,
+                        icon: const Icon(
+                          Icons.arrow_downward,
+                          color: Colors.green,
+                        ),
+                        iconSize: 24,
+                        elevation: 16,
+                        style: const TextStyle(color: Colors.green),
+                        underline: Container(
+                          height: 1,
+                          color: Colors.green,
+                        ),
+                        onChanged: (String? newValue) {
+                          setState(() {
+                            dropdownvalue = newValue!;
+                          });
+                        },
+                        items: <String>['Male', 'Female']
+                            .map<DropdownMenuItem<String>>((String value) {
+                          return DropdownMenuItem<String>(
+                            value: value,
+                            child: Text(
+                              value,
+                              style: const TextStyle(fontSize: 17),
+                            ),
+                          );
+                        }).toList(),
                       ),
                       const SizedBox(
                         height: 8,
@@ -254,7 +322,7 @@ class _SignUpPageCardState extends State<SignUpPageCard> {
                       SizedBox(
                         width: widget.size.width * 0.4,
                         child: RawMaterialButton(
-                          fillColor: Colors.white,
+                          fillColor: Colors.green,
                           padding: const EdgeInsets.symmetric(vertical: 10.0),
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(20.0),
@@ -270,7 +338,10 @@ class _SignUpPageCardState extends State<SignUpPageCard> {
                           },
                           child: const Text(
                             "Sign Up",
-                            style: TextStyle(fontWeight: FontWeight.bold),
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              color: Colors.white,
+                            ),
                           ),
                         ),
                       ),
@@ -285,5 +356,3 @@ class _SignUpPageCardState extends State<SignUpPageCard> {
     );
   }
 }
-
-

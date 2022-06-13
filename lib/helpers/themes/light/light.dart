@@ -33,7 +33,7 @@ ThemeData lightTheme = ThemeData(
   iconTheme: lightIconThemeData,
   //inputDecorationTheme: lightInputDecorationTheme,
   scaffoldBackgroundColor: white,
-  primarySwatch: Colors.blue,
+  primarySwatch: Colors.green,
   visualDensity: VisualDensity.adaptivePlatformDensity,
 );
 
