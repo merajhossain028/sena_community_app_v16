@@ -1,11 +1,13 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:sena_community_app/helpers/constants/constants.dart';
-import 'package:sena_community_app/screens/login/login.dart';
+import 'package:sena_community_app/screens/home/home.dart';
 
-class SignUpPageCard extends StatelessWidget {
-  final formKey = GlobalKey<FormState>();
-  SignUpPageCard({
+import '../api/signup.dart';
+
+class SignUpPageCard extends StatefulWidget {
+  const SignUpPageCard({
     Key? key,
     required this.size,
     required TextEditingController date,
@@ -14,6 +16,15 @@ class SignUpPageCard extends StatelessWidget {
 
   final Size size;
   final TextEditingController _date;
+
+  @override
+  State<SignUpPageCard> createState() => _SignUpPageCardState();
+}
+
+class _SignUpPageCardState extends State<SignUpPageCard> {
+  final formKey = GlobalKey<FormState>();
+  TextEditingController emailController = TextEditingController();
+  TextEditingController passwordController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -25,8 +36,8 @@ class SignUpPageCard extends StatelessWidget {
           shape:
               RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
           child: SizedBox(
-            height: size.height * 0.6,
-            width: size.width * 0.9,
+            height: widget.size.height * 0.6,
+            width: widget.size.width * 0.9,
             child: Padding(
               padding: const EdgeInsets.all(20),
               child: SingleChildScrollView(
@@ -59,6 +70,7 @@ class SignUpPageCard extends StatelessWidget {
                         height: 20,
                       ),
                       TextFormField(
+                        controller: emailController,
                         keyboardType: TextInputType.emailAddress,
                         decoration: const InputDecoration(
                           hintText: "Email",
@@ -103,6 +115,7 @@ class SignUpPageCard extends StatelessWidget {
                         height: 20,
                       ),
                       TextFormField(
+                        controller: passwordController,
                         obscureText: true,
                         decoration: const InputDecoration(
                           hintText: "Password",
@@ -133,6 +146,12 @@ class SignUpPageCard extends StatelessWidget {
                             color: Colors.green,
                           ),
                         ),
+                        validator: (v) {
+                          if (passwordController.text != v) {
+                            return "Password Dosen't Match";
+                          }
+                          return null;
+                        },
                       ),
                       const SizedBox(
                         height: 20,
@@ -151,7 +170,7 @@ class SignUpPageCard extends StatelessWidget {
                         height: 20,
                       ),
                       TextFormField(
-                        controller: _date,
+                        controller: widget._date,
                         decoration: const InputDecoration(
                           hintText: "Bitrh Date",
                           prefixIcon: Icon(
@@ -177,7 +196,7 @@ class SignUpPageCard extends StatelessWidget {
                               );
 
                           if (pickdate != null) {
-                            _date.text =
+                            widget._date.text =
                                 DateFormat('dd-MM-yyyy').format(pickdate);
                           }
                         },
@@ -198,7 +217,7 @@ class SignUpPageCard extends StatelessWidget {
                         height: 20,
                       ),
                       TextFormField(
-                        controller: _date,
+                        controller: widget._date,
                         decoration: const InputDecoration(
                           hintText: "Anniversery Date",
                           prefixIcon: Icon(
@@ -224,7 +243,7 @@ class SignUpPageCard extends StatelessWidget {
                               );
 
                           if (pickdate != null) {
-                            _date.text =
+                            widget._date.text =
                                 DateFormat('dd-MM-yyyy').format(pickdate);
                           }
                         },
@@ -233,24 +252,20 @@ class SignUpPageCard extends StatelessWidget {
                         height: 8,
                       ),
                       SizedBox(
-                        width: size.width * 0.4,
+                        width: widget.size.width * 0.4,
                         child: RawMaterialButton(
                           fillColor: Colors.white,
                           padding: const EdgeInsets.symmetric(vertical: 10.0),
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(20.0),
                           ),
-                          onPressed: () {
+                          onPressed: () async {
                             if (formKey.currentState!.validate()) {
-                              final snackBar = SnackBar(
-                                content: Text("Submitting form"),
-                              );
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) => const LogInScreen(),
-                                ),
-                              );
+                              // final snackBar = SnackBar(
+                              //   content: Text("Submitting form"),
+                              // );
+                              await signUp(context, emailController.text,
+                                  passwordController.text);
                             }
                           },
                           child: const Text(
@@ -270,3 +285,5 @@ class SignUpPageCard extends StatelessWidget {
     );
   }
 }
+
+

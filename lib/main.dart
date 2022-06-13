@@ -1,3 +1,4 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart' show SystemChrome;
 import 'package:flutter_easyloading/flutter_easyloading.dart' show EasyLoading;
@@ -8,6 +9,7 @@ import 'database/functions.dart' show HiveFuntions;
 import 'helpers/themes/themes.dart' show uiConfig;
 import 'providers/providers.dart' show providers;
 import 'providers/theme/theme.dart' show ThemeProvider;
+import 'screens/splash_screen/splash_screen.dart';
 import 'screens/wrapper.dart' show Wrapper;
 
 Future<void> main() async {
@@ -25,6 +27,7 @@ Future<void> _init() async {
   HiveFuntions.registerHiveAdepters();
   await HiveFuntions.openAllBoxes();
   WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
   SystemChrome.setSystemUIOverlayStyle(uiConfig);
 }
 
@@ -41,7 +44,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       theme: _theme.theme,
-      home: Wrapper(),
+      home: const SplashScreen(),
       builder: EasyLoading.init(),
     );
   }

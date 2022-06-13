@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "304977121560",
+    "project_id": "senavision16-ba994",
+    "storage_bucket": "senavision16-ba994.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:304977121560:android:8f5ec8ffc7b262b8584e6d",
+        "android_client_info": {
+          "package_name": "com.tsl.sena_community_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "304977121560-hb48rs0tp6fe95fu99v17aqbm20aefog.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBJlWoelubgXf7lBdeY-VBgV6h9YUUComw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "304977121560-hb48rs0tp6fe95fu99v17aqbm20aefog.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
