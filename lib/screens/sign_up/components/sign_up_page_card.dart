@@ -1,19 +1,14 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
+
 import 'package:sena_community_app/helpers/constants/constants.dart';
 
+import '../../../helpers/functions/select_date_picker.dart';
+import '../../../helpers/size_config/size_config.dart';
 import '../api/signup.dart';
 
 class SignUpPageCard extends StatefulWidget {
-  const SignUpPageCard({
-    Key? key,
-    required this.size,
-    required TextEditingController date,
-  })  : _date = date,
-        super(key: key);
-
-  final Size size;
-  final TextEditingController _date;
+  const SignUpPageCard({Key? key}) : super(key: key);
 
   @override
   State<SignUpPageCard> createState() => _SignUpPageCardState();
@@ -21,14 +16,23 @@ class SignUpPageCard extends StatefulWidget {
 
 class _SignUpPageCardState extends State<SignUpPageCard> {
   final formKey = GlobalKey<FormState>();
+
+  TextEditingController nameController = TextEditingController();
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
-  TextEditingController nameController = TextEditingController();
+  TextEditingController phoneController = TextEditingController();
+  TextEditingController baNumber = TextEditingController();
+  TextEditingController designation = TextEditingController();
+  Timestamp? dob;
+  TextEditingController spouseName = TextEditingController();
+  Timestamp? anniverseryDate;
+  
 
   String? dropdownvalue;
 
   @override
   Widget build(BuildContext context) {
+    Size size = MediaQuery.of(context).size;
     return Align(
       alignment: Alignment.center,
       child: SingleChildScrollView(
@@ -37,8 +41,8 @@ class _SignUpPageCardState extends State<SignUpPageCard> {
           shape:
               RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
           child: SizedBox(
-            height: widget.size.height * 0.6,
-            width: widget.size.width * 0.9,
+            height: size.height * 0.6,
+            width: size.width * 0.9,
             child: Padding(
               padding: const EdgeInsets.all(20),
               child: SingleChildScrollView(
@@ -51,6 +55,7 @@ class _SignUpPageCardState extends State<SignUpPageCard> {
                         height: 10,
                       ),
                       TextFormField(
+                        controller: nameController,
                         decoration: const InputDecoration(
                           hintText: "Name",
                           prefixIcon: Icon(
@@ -94,6 +99,7 @@ class _SignUpPageCardState extends State<SignUpPageCard> {
                         height: 20,
                       ),
                       TextFormField(
+                        controller: phoneController,
                         keyboardType: TextInputType.number,
                         decoration: const InputDecoration(
                           hintText: "Phone Number",
@@ -158,6 +164,7 @@ class _SignUpPageCardState extends State<SignUpPageCard> {
                         height: 20,
                       ),
                       TextFormField(
+                        controller: baNumber,
                         keyboardType: TextInputType.number,
                         decoration: const InputDecoration(
                           hintText: "BA Number",
@@ -178,39 +185,17 @@ class _SignUpPageCardState extends State<SignUpPageCard> {
                         height: 20,
                       ),
                       TextFormField(
-                        controller: widget._date,
+                        controller: designation,
                         decoration: const InputDecoration(
-                          hintText: "Bitrh Date",
+                          hintText: "Designation",
                           prefixIcon: Icon(
-                            Icons.calendar_today,
+                            Icons.card_travel,
                             color: Colors.green,
                           ),
                         ),
-                        onTap: () async {
-                          DateTime? pickdate = await showDatePicker(
-                              context: context,
-                              initialDate: DateTime.now(),
-                              firstDate: DateTime(1900),
-                              lastDate: DateTime.now());
-                          (context, child) => Theme(
-                                data: Theme.of(context).copyWith(
-                                  colorScheme: const ColorScheme.light(
-                                    primary: Colors.green,
-                                    onPrimary: Colors.green,
-                                    surface: Colors.green,
-                                  ),
-                                ),
-                                child: child,
-                              );
-
-                          if (pickdate != null) {
-                            widget._date.text =
-                                DateFormat('dd-MM-yyyy').format(pickdate);
-                          }
-                        },
                         validator: (value) {
                           if (value!.isEmpty) {
-                            return "Please Fill up your Birth Date";
+                            return "Please Fill up your Designation";
                           } else {
                             return null;
                           }
@@ -219,7 +204,44 @@ class _SignUpPageCardState extends State<SignUpPageCard> {
                       const SizedBox(
                         height: 20,
                       ),
+                      InkWell(
+                        onTap: () async {
+                          dob = Timestamp.fromDate(
+                              await selectDateFromPicker(context));
+                          setState(() {});
+                        },
+                        child: Container(
+                          height: 51.0,
+                          width: double.infinity,
+                          decoration: const BoxDecoration(
+                            border: Border(
+                              bottom:
+                                  BorderSide(width: 0.5, color: Colors.grey),
+                            ),
+                          ),
+                          child: Padding(
+                            padding: const EdgeInsets.fromLTRB(22, 13, 12, 13),
+                            child: Row(
+                              mainAxisAlignment: mainSpaceBetween,
+                              children: [
+                                Text(
+                                  dob == null
+                                      ? 'Select Date of Birth'
+                                      : dateDetailFormat.format(DateTime.parse(
+                                          dob!.toDate().toString())),
+                                  style: const TextStyle(fontSize: 17.0),
+                                ),
+                                const Icon(Icons.calendar_today, size: 20.0),
+                              ],
+                            ),
+                          ),
+                        ),
+                      ),
+                      const SizedBox(
+                        height: 20,
+                      ),
                       TextFormField(
+                        controller: spouseName,
                         decoration: const InputDecoration(
                           hintText: "Spouse Name",
                           prefixIcon: Icon(
@@ -238,44 +260,38 @@ class _SignUpPageCardState extends State<SignUpPageCard> {
                       const SizedBox(
                         height: 20,
                       ),
-                      TextFormField(
-                        controller: widget._date,
-                        decoration: const InputDecoration(
-                          hintText: "Anniversery Date",
-                          prefixIcon: Icon(
-                            Icons.calendar_today,
-                            color: Colors.green,
+                      InkWell(
+                        onTap: () async {
+                          anniverseryDate = Timestamp.fromDate(
+                              await selectDateFromPicker(context));
+                          setState(() {});
+                        },
+                        child: Container(
+                          height: 51.0,
+                          width: double.infinity,
+                          decoration: const BoxDecoration(
+                            border: Border(
+                              bottom:
+                                  BorderSide(width: 0.5, color: Colors.grey),
+                            ),
+                          ),
+                          child: Padding(
+                            padding: const EdgeInsets.fromLTRB(22, 13, 12, 13),
+                            child: Row(
+                              mainAxisAlignment: mainSpaceBetween,
+                              children: [
+                                Text(
+                                  anniverseryDate == null
+                                      ? 'Select anniversary date'
+                                      : dateDetailFormat.format(DateTime.parse(
+                                          anniverseryDate!.toDate().toString())),
+                                  style: const TextStyle(fontSize: 17.0),
+                                ),
+                                const Icon(Icons.calendar_today, size: 20.0),
+                              ],
+                            ),
                           ),
                         ),
-                        onTap: () async {
-                          DateTime? pickdate = await showDatePicker(
-                              context: context,
-                              initialDate: DateTime.now(),
-                              firstDate: DateTime(1900),
-                              lastDate: DateTime.now());
-                          (context, child) => Theme(
-                                data: Theme.of(context).copyWith(
-                                  colorScheme: const ColorScheme.light(
-                                    primary: Colors.green,
-                                    onPrimary: Colors.green,
-                                    surface: Colors.green,
-                                  ),
-                                ),
-                                child: child,
-                              );
-
-                          if (pickdate != null) {
-                            widget._date.text =
-                                DateFormat('dd-MM-yyyy').format(pickdate);
-                          }
-                        },
-                        validator: (value) {
-                          if (value!.isEmpty) {
-                            return "Please Fill up your Anniversery Date";
-                          } else {
-                            return null;
-                          }
-                        },
                       ),
                       const SizedBox(
                         height: 20,
@@ -320,7 +336,7 @@ class _SignUpPageCardState extends State<SignUpPageCard> {
                         height: 8,
                       ),
                       SizedBox(
-                        width: widget.size.width * 0.4,
+                        width: size.width * 0.4,
                         child: RawMaterialButton(
                           fillColor: Colors.green,
                           padding: const EdgeInsets.symmetric(vertical: 10.0),
@@ -332,8 +348,19 @@ class _SignUpPageCardState extends State<SignUpPageCard> {
                               // final snackBar = SnackBar(
                               //   content: Text("Submitting form"),
                               // );
-                              await signUp(context, emailController.text,
-                                  passwordController.text);
+                              await signUp(
+                                context,
+                                nameController.text,
+                                emailController.text,
+                                phoneController.text,
+                                passwordController.text,
+                                baNumber.text,
+                                designation.text,
+                                dob!,
+                                spouseName.text,
+                                dropdownvalue!,
+                                anniverseryDate!,
+                              );
                             }
                           },
                           child: const Text(

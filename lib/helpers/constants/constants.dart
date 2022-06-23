@@ -9,7 +9,9 @@ Color kLightPrimaryColor = Colors.green.shade900.withOpacity(0.85);
 Color kPrimaryColor = const Color.fromRGBO(216, 255, 22, 1.0);
 Color kSecendoryColor = const Color.fromRGBO(1, 63, 4, 1.0);
 
-DateFormat dateFormat = DateFormat('dd-MM-yy');
+DateFormat dateFormat = DateFormat('yyyy-MM-dd');
+DateFormat dateBirthDateFormat = DateFormat.MMMMd();
+DateFormat dateDetailFormat = DateFormat.yMMMMEEEEd();
 DateFormat timeFormat = DateFormat('hh:mm:ss a');
 NumberFormat numberFormat = NumberFormat('#,##,000.0#');
 

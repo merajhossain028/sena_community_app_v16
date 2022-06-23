@@ -19,7 +19,7 @@ class _BodyState extends State<Body> {
       child: Stack(
         children: [
           SignUpDesign(size: size),
-          SignUpPageCard(size: size, date: _date),
+          const SignUpPageCard(),
         ],
       ),
     );

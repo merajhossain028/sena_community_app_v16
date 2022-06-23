@@ -10,21 +10,18 @@ class UserListItem extends StatelessWidget {
       'image': 'assets/images/majid.jpeg',
       'name': ' Md Abdul Majid',
       'designation': 'Brigadier General (Retd)',
-      'gc': '2375',
       'ba': '3264',
     },
     {
       'image': 'assets/images/majid.jpeg',
       'name': ' Md Abdul Majid',
       'designation': 'Brigadier General (Retd)',
-      'gc': '2375',
       'ba': '3264',
     },
     {
       'image': 'assets/images/majid.jpeg',
       'name': ' Md Abdul Majid',
       'designation': 'Brigadier General (Retd)',
-      'gc': '2375',
       'ba': '3264',
     },
   ];
@@ -40,7 +37,6 @@ class UserListItem extends StatelessWidget {
                   image: catagories[index]['image'],
                   name: catagories[index]['name'],
                   designation: catagories[index]['designation'],
-                  gc: catagories[index]['gc'],
                   ba: catagories[index]['ba'],
                   // ignore: avoid_print
                   press: () => print('$index'),
@@ -56,12 +52,11 @@ class ListCard extends StatelessWidget {
     required this.image,
     required this.name,
     required this.designation,
-    required this.gc,
     required this.ba,
     required this.press,
   }) : super(key: key);
 
-  final String image, name, designation, gc, ba;
+  final String image, name, designation, ba;
   final GestureTapCallback press;
 
   @override
@@ -105,9 +100,6 @@ class ListCard extends StatelessWidget {
                               color: Colors.white)),
                       const SizedBox(height: 8.0),
                       Text('Designation: $designation',
-                          style: const TextStyle(color: Colors.white)),
-                      const SizedBox(height: 8.0),
-                      Text('GC Number: $gc',
                           style: const TextStyle(color: Colors.white)),
                       const SizedBox(height: 8.0),
                       Text('BA Number: $ba',
