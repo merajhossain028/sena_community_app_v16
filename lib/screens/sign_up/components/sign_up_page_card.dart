@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_easyloading/flutter_easyloading.dart';
 
 import 'package:sena_community_app/helpers/constants/constants.dart';
 
@@ -348,6 +349,13 @@ class _SignUpPageCardState extends State<SignUpPageCard> {
                               // final snackBar = SnackBar(
                               //   content: Text("Submitting form"),
                               // );
+                              if(anniverseryDate == null){
+                                EasyLoading.showError("Please Select Your Anniversery Date");
+                              }
+                              else if(dob == null)
+                              {
+                                EasyLoading.showError("Please Select Your Date of Birth");
+                              }
                               await signUp(
                                 context,
                                 nameController.text,

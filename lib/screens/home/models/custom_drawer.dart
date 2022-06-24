@@ -2,9 +2,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:sena_community_app/screens/home/home.dart';
-import 'package:sena_community_app/screens/login/login.dart';
 import 'package:sena_community_app/screens/profile/profile.dart';
-
 import 'package:sena_community_app/screens/v16_album/v16_album.dart';
 
 class CustomDrawer extends StatelessWidget {

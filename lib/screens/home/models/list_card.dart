@@ -1,47 +1,45 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:sena_community_app/models/user_model.dart';
 import 'package:sena_community_app/screens/profile/profile.dart';
 
 // ignore: must_be_immutable
 class UserListItem extends StatelessWidget {
   UserListItem({Key? key}) : super(key: key);
 
-  List<Map<String, dynamic>> catagories = [
-    {
-      'image': 'assets/images/majid.jpeg',
-      'name': ' Md Abdul Majid',
-      'designation': 'Brigadier General (Retd)',
-      'ba': '3264',
-    },
-    {
-      'image': 'assets/images/majid.jpeg',
-      'name': ' Md Abdul Majid',
-      'designation': 'Brigadier General (Retd)',
-      'ba': '3264',
-    },
-    {
-      'image': 'assets/images/majid.jpeg',
-      'name': ' Md Abdul Majid',
-      'designation': 'Brigadier General (Retd)',
-      'ba': '3264',
-    },
-  ];
+  
   @override
   Widget build(BuildContext context) {
-    return Column(
-      mainAxisSize: MainAxisSize.min,
-      children: [
-        ...List.generate(
-            catagories.length,
-            (index) => InkWell(
-                    child: ListCard(
-                  image: catagories[index]['image'],
-                  name: catagories[index]['name'],
-                  designation: catagories[index]['designation'],
-                  ba: catagories[index]['ba'],
-                  // ignore: avoid_print
-                  press: () => print('$index'),
-                ))),
-      ],
+    return StreamBuilder<QuerySnapshot>(
+      stream: FirebaseFirestore.instance.collection("users").snapshots(),
+      builder: (context, snapshot) {
+        if (snapshot.connectionState == ConnectionState.waiting) {
+              return const Center(child: CircularProgressIndicator());
+            }
+            if (snapshot.hasError) {
+              return const Center(child: Text('Error'));
+            }
+            List<UserModel> users = [];
+            for (var doc in snapshot.data!.docs) {
+               users.add(UserModel.fromDocument(doc));
+            }
+        return Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            ...List.generate(
+                users.length,
+                (index) => InkWell(
+                        child: ListCard(
+                      image: "assets/images/majid.jpeg",
+                      name: users[index].name,
+                      designation: users[index].designation,
+                      ba: users[index].BAN,
+                      // ignore: avoid_print
+                      press: () => print('$index'),
+                    ))),
+          ],
+        );
+      }
     );
   }
 }

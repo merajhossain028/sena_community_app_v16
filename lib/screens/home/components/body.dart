@@ -1,4 +1,5 @@
 import 'package:animated_text_kit/animated_text_kit.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 import '../models/list_card.dart';
@@ -76,7 +77,7 @@ class Body extends StatelessWidget {
                 isRepeatingAnimation: false,
                 animatedTexts: [
                   TypewriterAnimatedText(
-                    'Greetings, Md Abdul Majid !',
+                    FirebaseAuth.instance.currentUser!.email.toString(),
                     textStyle: const TextStyle(
                       fontSize: 20,
                       fontWeight: FontWeight.bold,
